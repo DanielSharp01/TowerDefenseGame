@@ -2,8 +2,6 @@
 
 A simple generic tower defense game written C. Using GLFW, OpenGL4.2 (GLEW), stb_image.h libraries.
 
-Developer, User Documentation and initial Specification is also avaliable in Hungarian (see PDFs).
-
 ## Game rules:
 
 Enemies start from a start point and move towards the goal. The player's tasked with stopping these enemies by shooting them with turrets they place.
