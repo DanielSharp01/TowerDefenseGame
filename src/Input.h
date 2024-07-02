@@ -19,14 +19,14 @@ typedef struct MouseState
     bool buttons[GLFW_MOUSE_BUTTON_LAST + 1];
 } MouseState;
 
-KeyboardState lastKeyboard;
-KeyboardState currentKeyboard;
+extern KeyboardState lastKeyboard;
+extern KeyboardState currentKeyboard;
 
-MouseState lastMouse;
-MouseState currentMouse;
+extern MouseState lastMouse;
+extern MouseState currentMouse;
 
-void clearKeyboardState(KeyboardState* state);
-void clearMouseState(MouseState* state);
+void clearKeyboardState(KeyboardState *state);
+void clearMouseState(MouseState *state);
 
 bool isKeyDown(int key);
 bool isKeyUp(int key);
@@ -43,6 +43,5 @@ bool isAnythingPressed();
 Vector2 getMousePosition();
 Vector2 getMousePositionWorld();
 Vector2 getMouseScrollOffset();
-
 
 #endif

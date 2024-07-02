@@ -9,11 +9,11 @@
 #include "Input.h"
 #include <stdbool.h>
 
-void resizeCallback(GLFWwindow* window, int width, int height);
-void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
-void mouseCallback(GLFWwindow* window, int button, int action, int mods);
-void mousePosCallback(GLFWwindow* window, double x, double y);
-void mouseScrollCallback(GLFWwindow* window, double xoffs, double yoffs);
+void resizeCallback(GLFWwindow *window, int width, int height);
+void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mods);
+void mouseCallback(GLFWwindow *window, int button, int action, int mods);
+void mousePosCallback(GLFWwindow *window, double x, double y);
+void mouseScrollCallback(GLFWwindow *window, double xoffs, double yoffs);
 
 double lastTime;
 bool running;
@@ -21,7 +21,7 @@ bool running;
 int main(void)
 {
     srand(time(NULL));
-    GLFWwindow* window;
+    GLFWwindow *window;
     if (!glfwInit())
     {
         printf("GLFW failed to initialize!");
@@ -52,17 +52,17 @@ int main(void)
     glfwSetMouseButtonCallback(window, mouseCallback);
     glfwSetCursorPosCallback(window, mousePosCallback);
     glfwSetScrollCallback(window, mouseScrollCallback);
-    
+
     clearKeyboardState(&lastKeyboard);
     clearKeyboardState(&currentKeyboard);
     clearMouseState(&lastMouse);
     clearMouseState(&currentMouse);
-    
+
     glfwSwapInterval(1);
-    
+
     Game_initialize();
     resizeCallback(window, 1280, 720);
-    
+
     running = true;
     while (!glfwWindowShouldClose(window) && running)
     {
@@ -89,29 +89,29 @@ void exitProgram()
     running = false;
 }
 
-void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
+void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mods)
 {
     currentKeyboard.keys[key] = (action != GLFW_RELEASE);
 }
 
-void mouseCallback(GLFWwindow* window, int button, int action, int mods)
+void mouseCallback(GLFWwindow *window, int button, int action, int mods)
 {
     currentMouse.buttons[button] = (action != GLFW_RELEASE);
 }
 
-void mousePosCallback(GLFWwindow* window, double x, double y)
+void mousePosCallback(GLFWwindow *window, double x, double y)
 {
     currentMouse.position.x = x;
     currentMouse.position.y = y;
 }
 
-void mouseScrollCallback(GLFWwindow* window, double xoffs, double yoffs)
+void mouseScrollCallback(GLFWwindow *window, double xoffs, double yoffs)
 {
     currentMouse.scrollOffset.x += xoffs;
     currentMouse.scrollOffset.y += yoffs;
 }
 
-void resizeCallback(GLFWwindow* window, int width, int height)
+void resizeCallback(GLFWwindow *window, int width, int height)
 {
     glViewport(0, 0, width, height);
     Game_resize(width, height);

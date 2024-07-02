@@ -1,13 +1,18 @@
 #include "Input.h"
 
-void clearKeyboardState(KeyboardState* state)
+KeyboardState lastKeyboard;
+KeyboardState currentKeyboard;
+MouseState lastMouse;
+MouseState currentMouse;
+
+void clearKeyboardState(KeyboardState *state)
 {
     int i;
     for (i = 0; i < GLFW_KEY_LAST + 1; i++)
         state->keys[i] = false;
 }
 
-void clearMouseState(MouseState* state)
+void clearMouseState(MouseState *state)
 {
     int i;
     state->position.x = 0;
@@ -62,11 +67,13 @@ bool isAnythingPressed()
 {
     int i;
     for (i = 0; i < GLFW_KEY_LAST + 1; i++)
-        if (isKeyPressed(i)) return true;
+        if (isKeyPressed(i))
+            return true;
 
     for (i = 0; i < GLFW_MOUSE_BUTTON_LAST + 1; i++)
-        if (isMButtonPressed(i)) return true;
-    
+        if (isMButtonPressed(i))
+            return true;
+
     return false;
 }
 
